@@ -6,7 +6,7 @@ const Jimp = require('jimp');
 
 
 module.exports = function(app, db) {
-    app.get('/test', (req, res) => {
+    app.get('/api/v1/ganborzoi/inspiration', (req, res) => {
 
         //Initialize params
         const oauth = OAuth({
@@ -33,8 +33,6 @@ module.exports = function(app, db) {
         };
         console.log('gets here');
         
-
-
         //Make request with oauth headers
         request({
             url: request_data.url,
@@ -54,9 +52,14 @@ module.exports = function(app, db) {
             console.log('randomNum: ' + randomNum);
             console.log('tweet id: ' + filteredBody[randomNum].id_str);
             Jimp.read(filteredBody[randomNum].extended_entities.media[0].media_url, function (err, image) {
-                Jimp.loadFont(Jimp.FONT_SANS_128_WHITE).then(function (font) {
+                Jimp.loadFont(Jimp.FONT_SANS_64_WHITE).then(function (font) {
                     image
-                        .print(font, 100, 700, "Do Your Best!")
+                        .print(
+                            font, 
+                            10, 
+                            10, 
+                            'Do Your Best!'
+                        )
                         .getBuffer(Jimp.AUTO, (err, buffer) => {
                             res.contentType('jpeg');
                             res.send(buffer);
@@ -64,8 +67,6 @@ module.exports = function(app, db) {
                         //.write('test.jpg');
                 })
             });
-            //request(body[0].extended_entities.media[0].media_url).pipe(fs.createWriteStream('test.png'));
-            //res.send('test');
         });
     });
 };
