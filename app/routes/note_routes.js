@@ -11,8 +11,8 @@ module.exports = function(app, db) {
         //Initialize params
         const oauth = OAuth({
             consumer: {
-              key: 'e1SE2H2ADjLgzIoW7KNyTkOCU',
-              secret: 'GS8KuIl0VMJxZAKuQi1D0EtsH2PNxgygdW8ZpOL5nXX5eGLNzp'
+              key: 'key',
+              secret: 'secret'
             },
             signature_method: 'HMAC-SHA1',
             hash_function(base_string, key) {
@@ -28,8 +28,8 @@ module.exports = function(app, db) {
 
         //Token data
         const token = {
-            key: '753354257152086016-dHi7UTMC4bBanZYuX1Q9dbhiRvBIDvM',
-            secret: '9TT7SinilpolhDT6kmK8OUH1o6CIIkYc5qYL8k5cXbbXX'
+            key: 'key',
+            secret: 'secret'
         };
         console.log('gets here');
         
